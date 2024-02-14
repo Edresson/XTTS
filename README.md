@@ -1,3 +1,5 @@
-# YourTTS
+# XTTS
 
-[Web page](https://edresson.github.io/YourTTS/)
+[XTTS audio demo page](https://edresson.github.io/XTTS/)
+
+
