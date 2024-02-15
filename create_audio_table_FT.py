@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 import numpy as np
 # set seed to ensures reproducibility
-def set_seed(random_seed=1234):
+def set_seed(random_seed=12):
     # set deterministic inference
     random.seed(random_seed)
     np.random.seed(random_seed)
