@@ -2,8 +2,8 @@
 #!/bin/bash
 
 
-SOURCE_DIR="/raid/edresson/dev/Paper/TTS-evaluation-public/Evaluation/"
-TARGET_DIR="/raid/edresson/dev/Paper/XTTS-gh-pages/audios_demo/Evaluation/"
+SOURCE_DIR="/raid/edresson/dev/Paper/XTTS-gh-pages/audios_demo/FT/References_FT_bk/"
+TARGET_DIR="/raid/edresson/dev/Paper/XTTS-gh-pages/audios_demo/FT/References_FT/"
 OUT_EXTENSION=".wav"
 SEARCH_EXTENSION=".wav" 
 export SOURCE_DIR
