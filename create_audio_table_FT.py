@@ -59,7 +59,7 @@ def create_html_table(used_samples):
   
     html = df.pivot_table(values=['generated_wav'], index=["Model Name"], columns=['Speaker Name'], aggfunc='sum').to_html()
 
-    html = html.replace("/raid/edresson/dev/Paper/References_FT/", "audios_demo/FT/References_FT/").replace("/Evaluation/", "/")
+    html = html.replace("/raid/edresson/dev/Paper/References_FT/", "audios_demo/FT/References_FT/")
 
     # added audio 
     html = html.replace("<td>audios_demo/", '<td><audio controls style="width: 110px;" src="audios_demo/')
@@ -177,7 +177,7 @@ for lang in Supported_languages:
                         selected_item["Speaker Name"] = speakers_map[key]
                         break
 
-                selected_item["generated_wav"] = os.path.join(EVAL_PATH.replace("FT/", ""), selected_item["generated_wav"])
+                selected_item["generated_wav"] = os.path.join(EVAL_PATH.replace("FT/", ""), selected_item["generated_wav"]).replace("/Evaluation/", "/")
                 selected_item["speaker_reference"] = os.path.join(EVAL_PATH.replace("FT/", ""), selected_item["speaker_reference"])
                 selected_audio_paths[name].append(selected_item["generated_wav"])
                 # selected_text[name].append(selected_item["text"])
@@ -187,7 +187,7 @@ for lang in Supported_languages:
                 selected_item = df_speaker.sample(n=1).iloc[0]
                 selected_item["Speaker Name"] = "_".join(name.split("/")[-1].split("_")[:2])
                 selected_item["Model Name"] = SAMPLES_CSV.split("audios_demo/FT/")[-1].split("/")[0]
-                selected_item["generated_wav"] = os.path.join(EVAL_PATH.replace("FT/", ""), selected_item["generated_wav"])
+                selected_item["generated_wav"] = os.path.join(EVAL_PATH.replace("FT/", ""), selected_item["generated_wav"]).replace("/Evaluation/", "/")
                 selected_item["speaker_reference"] = os.path.join(EVAL_PATH.replace("FT/", ""), selected_item["speaker_reference"])
                 
                 for key in MAP_names:
@@ -225,9 +225,12 @@ audio_files = list(glob(f'{EVAL_PATH}/**/*.wav', recursive=True))
 
 
 for file in audio_files:
+    # print(file, used_files[0])
     if file not in used_files and "References_FT" not in file:
         # print(file)
         if os.path.isfile(file):
             os.remove(file)
+    else:
+        print("Audio not deleted:", file)
 
 # df_out["generated_wav"]
